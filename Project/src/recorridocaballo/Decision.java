@@ -19,6 +19,7 @@ public class Decision {
     public Decision(Position current) {
 	this.current = current;
 	this.chosen = -1;
+	this.choices = new Position[VARIATION.length];
 	generateChoices();
     }
 
@@ -55,6 +56,7 @@ public class Decision {
 	    getChoices()[choice].choose();
 	    return true;
 	} catch (Exception e) {
+	    System.out.println(e.getMessage());
 	    return false;
 	}
     }
@@ -63,8 +65,8 @@ public class Decision {
 	for (int i = 0; i < VARIATION.length; i++) {
 	    int x = this.current.getX();
 	    int y = this.current.getY();
-	    x += VARIATION[i][1];
-	    y += VARIATION[i][2];
+	    x += VARIATION[i][0];
+	    y += VARIATION[i][1];
 	    this.choices[i] = Handler.getPosition(x,y);
 	}
     }

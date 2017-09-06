@@ -43,7 +43,7 @@ public class Position {
     
     public void choose() throws Exception {
 	if (chosen) {
-	    throw new Exception("Repeat position!");
+	    throw new Exception("repeat");
 	}
 	chosen = true;
     }
