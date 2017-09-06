@@ -45,6 +45,23 @@ public abstract class Handler {
 	
 	while (path.size() < (board.length*board.length)) {
 	    
+	    int lastIndex = path.size()-1;
+	    int i = 0;
+	    if (path.get(lastIndex).hasChosen()) {
+		i = path.get(lastIndex).getChosenIndex()+1;
+	    }
+	    
+	    // MAKE A CHOICE
+	    boolean success = false;
+	    while (i < 8 && !success) {
+		success = path.get(lastIndex).choose(i);
+		i++;
+	    }
+	    if (i >= 8 && !success) {
+		path.remove(lastIndex);
+	    } else {
+		path.add(new Decision(path.get(lastIndex).getChosenPosition()));
+	    }
 	}
 	
 	return path;

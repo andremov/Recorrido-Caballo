@@ -18,6 +18,7 @@ public class Decision {
 
     public Decision(Position current) {
 	this.current = current;
+	this.chosen = -1;
 	generateChoices();
     }
 
@@ -32,17 +33,30 @@ public class Decision {
     public Position[] getChoices() {
 	return choices;
     }
+    
+    public boolean hasChosen() {
+	return getChosenIndex() != -1;
+    }
 
     /**
      * @return the chosen
      */
-    public int getChosen() {
+    public int getChosenIndex() {
 	return chosen;
     }
     
-    public void choose(int choice) {
-	this.chosen = choice;
-	getChoices()[choice].choose();
+    public Position getChosenPosition() {
+	return choices[chosen];
+    }
+    
+    public boolean choose(int choice) {
+	try {
+	    this.chosen = choice;
+	    getChoices()[choice].choose();
+	    return true;
+	} catch (Exception e) {
+	    return false;
+	}
     }
 
     public void generateChoices() {
