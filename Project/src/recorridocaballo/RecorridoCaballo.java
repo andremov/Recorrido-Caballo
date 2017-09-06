@@ -27,7 +27,7 @@ public class RecorridoCaballo {
 		System.out.println("Ingrese un valor valido.");
 	    }
 	}
-		
+	Handler.init(boardSize);
     }
     
 }

@@ -61,6 +61,7 @@ public abstract class Handler {
 		path.remove(lastIndex);
 	    } else {
 		path.add(new Decision(path.get(lastIndex).getChosenPosition()));
+		System.out.println("Chose to move to "+path.get(lastIndex).getChosenPosition());
 	    }
 	}
 	
