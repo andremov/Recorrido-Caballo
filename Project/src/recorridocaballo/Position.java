@@ -44,6 +44,11 @@ public class Position {
     public void choose() {
 	chosen = true;
     }
+
+    @Override
+    public String toString() {
+	return "("+this.x+","+this.y+")";
+    }
     
     public void takeBack() {
 	chosen = false;

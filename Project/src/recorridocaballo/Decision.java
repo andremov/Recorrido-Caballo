@@ -21,6 +21,11 @@ public class Decision {
 	generateChoices();
     }
 
+    @Override
+    public String toString() {
+	return "FROM "+this.current+" TO "+this.choices[chosen];
+    }
+
     /**
      * @return the choices
      */
