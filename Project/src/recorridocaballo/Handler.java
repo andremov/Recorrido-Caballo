@@ -9,6 +9,25 @@ package recorridocaballo;
  *
  * @author Andrés Movilla
  */
-public class Handler {
+public abstract class Handler {
+    
+    private static Position[][] board;
+    
+    public static void init(int boardSize) {
+	board = new Position[boardSize][boardSize];
+	for (int i = 0; i < boardSize; i++) {
+	    for (int j = 0; j < boardSize; j++) {
+		board[j][i] = new Position(i,j);
+	    }
+	}
+    }
+    
+    public static Position getPosition(int x, int y) {
+	try {
+	    return board[y][x];
+	} catch (Exception e) {
+	    return null;
+	}
+    }
     
 }

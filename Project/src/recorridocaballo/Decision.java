@@ -11,9 +11,15 @@ package recorridocaballo;
  */
 public class Decision {
     
+    private static int[][] VARIATION = { {1,2}, {-1,2}, {2,1}, {2,-1}, {1,-2}, {-1,-2}, {-2,1}, {-2,-1} };
     private Position current;
     private Position[] choices;
     private int chosen;
+
+    public Decision(Position current) {
+	this.current = current;
+	generateChoices();
+    }
 
     /**
      * @return the choices
@@ -31,10 +37,17 @@ public class Decision {
     
     public void choose(int choice) {
 	this.chosen = choice;
+	getChoices()[choice].choose();
     }
 
-    public void generateChoices(int boundary) {
-	
+    public void generateChoices() {
+	for (int i = 0; i < VARIATION.length; i++) {
+	    int x = this.current.getX();
+	    int y = this.current.getY();
+	    x += VARIATION[i][1];
+	    y += VARIATION[i][2];
+	    this.choices[i] = Handler.getPosition(x,y);
+	}
     }
 
     /**
@@ -42,13 +55,6 @@ public class Decision {
      */
     public Position getCurrent() {
 	return current;
-    }
-
-    /**
-     * @param current the current to set
-     */
-    public void setCurrent(Position current) {
-	this.current = current;
     }
     
 }

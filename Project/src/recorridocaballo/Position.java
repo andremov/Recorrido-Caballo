@@ -12,10 +12,12 @@ package recorridocaballo;
 public class Position {
     private int x;
     private int y;
+    private boolean chosen;
 
     public Position(int x, int y) {
 	this.x = x;
 	this.y = y;
+	this.chosen = false;
     }
 
     /**
@@ -30,5 +32,20 @@ public class Position {
      */
     public int getY() {
 	return y;
+    }
+
+    /**
+     * @return the chosen
+     */
+    public boolean isChosen() {
+	return chosen;
+    }
+    
+    public void choose() {
+	chosen = true;
+    }
+    
+    public void takeBack() {
+	chosen = false;
     }
 }
