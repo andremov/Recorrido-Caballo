@@ -56,7 +56,6 @@ public class Decision {
 	    getChoices()[choice].choose();
 	    return true;
 	} catch (Exception e) {
-	    System.out.println(e.getMessage());
 	    return false;
 	}
     }

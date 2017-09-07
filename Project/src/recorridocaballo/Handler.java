@@ -52,16 +52,19 @@ public abstract class Handler {
 	
 	while (path.size() < (board.length*board.length)) {
 	    
+//	    System.out.println("Doing step.");
+//	    new java.util.Scanner(System.in).nextLine();
+	    
 	    int lastIndex = path.size()-1;
 	    int i = 0;
 	    if (path.get(lastIndex).hasChosen()) {
 		i = path.get(lastIndex).getChosenIndex()+1;
-		System.out.println("Last choice failed, now trying from "+i+"...");
+//		System.out.println("Last choice failed, now trying from "+i+"...");
 	    }
 	    
 	    boolean success = false;
 	    while (i < 8 && !success) {
-		System.out.println("Trying choice "+i+"...");
+//		System.out.println("Trying choice "+i+": "+path.get(lastIndex).getChoices()[i]);
 		success = path.get(lastIndex).choose(i);
 		i++;
 	    }
@@ -69,11 +72,11 @@ public abstract class Handler {
 	    if (i >= 8 && !success) {
 		try {
 		    try {
-			path.get(lastIndex).getChosenPosition().takeBack();
+			path.get(lastIndex-1).getChosenPosition().takeBack();
 		    } catch (Exception e) { }
 		    rep = rep.substring(0, rep.length()-2);
 		    path.remove(lastIndex);
-		    System.out.println((lastIndex-1)+": Going back to "+path.get(lastIndex-1).getCurrent());
+//		    System.out.println((lastIndex-1)+": Going back to "+path.get(lastIndex-1).getCurrent());
 		    System.out.println(rep);
 		} catch (Exception e) {
 		    break;
@@ -81,7 +84,7 @@ public abstract class Handler {
 	    } else {
 		rep += " "+path.get(lastIndex).getChosenIndex();
 		path.add(new Decision(path.get(lastIndex).getChosenPosition()));
-		System.out.println((lastIndex+1)+": Chose to move to "+path.get(lastIndex).getChosenPosition());
+//		System.out.println((lastIndex+1)+": Chose to move to "+path.get(lastIndex).getChosenPosition());
 		System.out.println(rep);
 	    }
 	}
